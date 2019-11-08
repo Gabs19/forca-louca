@@ -70,11 +70,3 @@ print(palavra)
 indices = pegar_indices(palavra,'a')
 
 print(troca_troca_jequete(indices, 'a',palavra_secreta))
-
-
-
-
-
-
-
-
