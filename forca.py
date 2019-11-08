@@ -35,8 +35,17 @@ _____
 
 
 
-def troca_troca_jequete(indices, letra):
-    pass
+def troca_troca_jequete(indices, letra, palavra_secreta):
+
+    nova_palavra_secreta = list(palavra_secreta)
+
+    for index in indices:
+        nova_palavra_secreta[index] = letra
+
+    return ' '.join(nova_palavra_secreta)
+    
+
+    
     
             
 def pegar_indices(palavra, letra_escolhida):
@@ -58,8 +67,9 @@ palavra_secreta = butar_tracinho(palavra)
 pesadao(palavra_secreta, categoria)
 
 print(palavra)
-print(pegar_indices(palavra,'a'))
+indices = pegar_indices(palavra,'a')
 
+print(troca_troca_jequete(indices, 'a',palavra_secreta))
 
 
 
