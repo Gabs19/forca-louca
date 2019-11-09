@@ -1,4 +1,5 @@
 import random
+import emojis
 
 palavras = {
     'bicho' : ['saguin','timbu','sabiá','piolho-de-cobra','bafomete','calango','lumbriga','tanajura','paimon'],
@@ -15,23 +16,23 @@ def roda_roda(palavras):
 
 
 def butar_tracinho(palavra):
-    return len(palavra) * '_ '
+    return len(palavra) * ' '
 
     
-def pesadao(palavra_secreta,categoria):
-    print(rf"""/
-        RODA RODA JEQUITÊ
-======= DICA : {categoria} =======
-_____
-|     |
-|     O
-|    \|/    
-|     |
-|    /ç\
-|
-        {palavra_secreta}
-
-""")
+def pesadao(palavra_secreta, categoria):
+    print(emojis.encode(rf"""
+     RODA RODA JEQUITÊ
+======= DICA: {categoria.upper()} ==========
+___________
+|          |
+|    :gun:з= :santa: =ε/̵͇̿̿/’̿’̿ ̿ 
+|        ( . )  
+|       _//🍆\\_  
+|    
+|     
+|        {' '.join(list(palavra_secreta))}
+         {len(palavra_secreta) * "_ "}
+"""))
 
 
 
@@ -42,9 +43,7 @@ def troca_troca_jequete(indices, letra, palavra_secreta):
     for index in indices:
         nova_palavra_secreta[index] = letra
 
-    return ' '.join(nova_palavra_secreta)
-    
-
+    return ''.join(nova_palavra_secreta)
     
     
             
@@ -64,9 +63,11 @@ def pegar_indices(palavra, letra_escolhida):
 categoria, palavra = roda_roda(palavras)
 palavra_secreta = butar_tracinho(palavra)
 
-pesadao(palavra_secreta, categoria)
+for i in range(10):
+    
+    pesadao(palavra_secreta, categoria)
+    letra_escolhida = input('Informe uma letra: ').lower()
 
-print(palavra)
-indices = pegar_indices(palavra,'a')
+    indices = pegar_indices(palavra, letra_escolhida)
+    palavra_secreta = troca_troca_jequete(indices, letra_escolhida, palavra_secreta)
 
-print(troca_troca_jequete(indices, 'a',palavra_secreta))
